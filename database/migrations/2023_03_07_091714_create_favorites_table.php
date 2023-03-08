@@ -17,6 +17,9 @@ class CreateFavoritesTable extends Migration
             $table->id();
             $table->enum('type', ['movie', 'serie']);
             $table->unsignedBigInteger('ref_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

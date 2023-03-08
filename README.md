@@ -4,7 +4,7 @@ Flixflex is a RESTful API that allows users to register and login, and to browse
 ### Installation:
 To install Flixflex API, follow these steps:
 
-1. Clone the repository: ``git clone https://github.com/abdimed/FlixFlex.git``
+1. Clone the repository: ``git clone git@github.com:hassen66/-FlixFlex-Rest-Api.git``
 2. Install dependencies: ``composer install``
 3. Create a new ``.env file: cp .env.example .env``
 4. Generate an application key: ``php artisan key:generate``
@@ -19,23 +19,23 @@ To install Flixflex API, follow these steps:
 ### API Endpoints
 | HTTP Verbs | Endpoints | Action |
 | --- | --- | --- |
-| POST | /api/subscribe | To sign up a new user account |
+| POST | /api/register | To sign up a new user account |
 | POST | /api/auth/login | To login an existing user account |
-| POST | /api/auth/logout | To logout from an user account |
-| GET | /api/movies/list | To retrieve all movies on the platform |
+| GET | /api/movies | To retrieve all movies on the platform |
 | GET | /api/movies/search | To search for movies on the platform |
-| GET | /api/movies/detail/{id} | To retrieve a single movie on the platform |
-| GET | /api/movies/detail/{id}/trailer | To retrieve a single movie trailer on the platform |
-| GET | /api/movies/addToFavorite/{id} | To add a single movie on the user favorite's list |
-| GET | /api/shows/list | To retrieve all shows on the platform |
-| GET | /api/shows/search | To search for shows on the platform |
-| GET | /api/shows/detail/{id} | To retrieve a single movie on the platform |
-| GET | /api/shows/detail/{id}/trailer | To retrieve a single movie trailer on the platform |
-| GET | /api/shows/addToFavorite/{id} | To add a single movie on the user favorite's list |
-| GET | /api/favorites/movies | To retrieve the movies user favorite's list on the platform |
-| GET | /api/favorites/shows | TTo retrieve the shows user favorite's list on the platform |
-| DELETE | /api/favorites/deleteMovie/{id} | To retrieve all movies on the platform |
-| DELETE | /api/favorites/deleteShow/{id} | To retrieve all movies on the platform |
+| GET | /api/movies/top-rated | To retrieve top rated movies on the platform |
+| GET | /api/movies/{id} | To retrieve a single movie on the platform |
+| GET | /api/movies/{id}/trailer | To retrieve a single movie trailer on the platform |
+| POST | /api/movies/{movieId}/favorites | To add a single movie on the user favorite's list |
+| GET | /api/series | To retrieve all shows on the platform |
+| GET | /api/series/search | To search for shows on the platform |
+| GET | /api/series/top-rated | To retrieve top rated shows on the platform |
+| GET | /api/series/{id} | To retrieve a single show on the platform |
+| GET | /api/series/{id}/trailer | To retrieve a single shows trailer on the platform |
+| POST | /api/series/{serieId}/favorites | To add a single shows on the user favorite's list |
+| GET | /api/favorites | To retrieve user favorite's list on the platform |
+| DELETE | /api/movies/{movieId}/favorites | To delete a single movie the platform |
+| DELETE | /api/series/{serieId}/favorites | To delete a single shows on the platform |
 
 ### Technologies Used
 * [PHP](https://php.net/) A popular general-purpose scripting language that is especially suited to web development.

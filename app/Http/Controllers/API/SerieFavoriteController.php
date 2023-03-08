@@ -35,6 +35,7 @@ class SerieFavoriteController extends Controller
     {
         $favorite = Favorite::firstOrCreate([
             'ref_id' => $serieId,
+            'user_id' => $request->user()->id,
             'type' => 'serie'
         ]);
 
@@ -51,9 +52,9 @@ class SerieFavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($serieId,$id)
+    public function destroy(Request $request,$serieId,$id)
     {
-        $favorite = Favorite::where('id',$id)->where('type','serie')->first();
+        $favorite = Favorite::where('id',$id)->where('type','serie')->where('user_id',$request->user()->id)->first();
 
         if($favorite){
             $favorite->delete();

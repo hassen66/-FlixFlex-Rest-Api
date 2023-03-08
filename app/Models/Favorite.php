@@ -14,5 +14,5 @@ class Favorite extends Model
      *
      * @var array
      */
-    protected $fillable = ['ref_id', 'type'];
+    protected $fillable = ['ref_id', 'type','user_id'];
 }

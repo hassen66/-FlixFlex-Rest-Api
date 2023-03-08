@@ -10,22 +10,6 @@ use Illuminate\Http\Response;
 class MovieFavoriteController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function index()
-    {
-        $favorites = Favorite::where('type','movie')->orderByDesc('create_at')->orderByDesc('id')->paginate(15);
-
-        return response()->json([
-            'statusCode' => Response::HTTP_OK,
-            'status' => Response::$statusTexts[Response::HTTP_OK],
-            'data' => $favorites
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,6 +19,7 @@ class MovieFavoriteController extends Controller
     {
         $favorite = Favorite::firstOrCreate([
             'ref_id' => $movieId,
+            'user_id' => $request->user()->id,
             'type' => 'movie'
         ]);
 
@@ -51,9 +36,9 @@ class MovieFavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($movieId,$id)
+    public function destroy(Request $request,$movieId,$id)
     {
-        $favorite = Favorite::where('id',$id)->where('type','movie')->first();
+        $favorite = Favorite::where('id',$id)->where('type','movie')->where('user_id',$request->user()->id)->first();
 
         if($favorite){
             $favorite->delete();
